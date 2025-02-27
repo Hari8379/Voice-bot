@@ -69,7 +69,7 @@ def extract_data(input_text: InputText):
     
     return student_details
 
-if _name_ == "_main_":
-    port = int(os.getenv("PORT", 10000))
-    import gunicorn
-    gunicorn.run(app, host="0.0.0.0", port=port)
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  # Defaulting to 8000 if PORT is not set
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=port)
