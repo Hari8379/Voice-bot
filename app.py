@@ -70,6 +70,6 @@ def extract_data(input_text: InputText):
     return student_details
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8000))  # Defaulting to 8000 if PORT is not set
+    port = int(os.getenv("PORT", 8000))  # Ensure PORT is dynamically fetched
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=port)
