@@ -2,6 +2,7 @@ import re
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from pymongo import MongoClient
+import os
 
 app = FastAPI()
 
@@ -66,4 +67,9 @@ def extract_data(input_text: InputText):
     if not student_details:
         raise HTTPException(status_code=404, detail="No student found.")
     
-    return student_details
+    return student_details
+
+if _name_ == "_main_":
+    port = int(os.getenv("PORT", 10000))
+    import gunicorn
+    gunicorn.run(app, host="0.0.0.0", port=port)
